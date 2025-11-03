@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio - EEST N°1 "Mariano Moreno"</title>
-    
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Tailwind Config para Dark Mode -->
     <script>
         tailwind.config = {
@@ -25,16 +26,16 @@
             }
         }
     </script>
-    
+
     <!-- Alpine.js para interactividad -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
+
     <!-- Font Awesome para íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Bootstrap Icons (para el footer) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    
+
     <style>
         /* Animaciones personalizadas */
         @keyframes fadeInDown {
@@ -42,122 +43,134 @@
                 opacity: 0;
                 transform: translateY(-20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
+
         .fade-in-down {
             animation: fadeInDown 1s ease-out;
         }
-        
+
         .fade-in-up {
             animation: fadeInUp 1s ease-out;
         }
-        
+
         .fade-in {
             animation: fadeIn 0.6s ease-out;
         }
-        
+
         /* Gradientes personalizados */
         .gradient-primary {
             background: linear-gradient(135deg, #A2C1DD 0%, #096dd9 100%);
         }
-        
+
         .gradient-bg-light {
             background: linear-gradient(to bottom, #ffffff, #f0f2f5);
         }
-        
+
         .gradient-bg-dark {
             background: linear-gradient(to bottom, #1a1a1a, #2d2d2d);
         }
-        
+
         /* Aspecto ratio para video responsivo */
         .aspect-video-custom {
             aspect-ratio: 4 / 3;
         }
-        
+
         /* Estilos para el drawer móvil */
         .drawer-overlay {
             backdrop-filter: blur(4px);
         }
-        
+
         /* Smooth transitions para dark mode */
         * {
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
-        
+
         /* Evitar transiciones en animaciones específicas */
         .no-transition {
             transition: none !important;
         }
     </style>
 </head>
+
 <body class="min-h-screen" x-data="appLayout()" x-init="init()" :class="darkMode ? 'dark' : ''">
-    
+
     <!-- Wrapper Principal con color de fondo dinámico -->
     <div class="min-h-screen flex flex-col" :class="darkMode ? 'gradient-bg-dark' : 'gradient-bg-light'">
-        
+
         <!-- NAVBAR DESKTOP - Reemplaza NavBarMenu.razor -->
         <!-- Se oculta en móvil (< 768px) -->
         <header class="hidden md:block sticky top-0 z-40 fade-in-down">
             <nav class="gradient-primary shadow-lg">
                 <div class="container mx-auto px-4 py-3">
                     <div class="flex items-center justify-between">
-                        
+
                         <!-- Logo - Reemplaza .logo -->
                         <div class="flex-shrink-0">
                             <a href="/" class="block">
-                                <img 
-                                    src="Images/School_Logo.webp" 
-                                    alt="Logo Escuela EEST N°1" 
+                                <img src="Images/School_Logo.webp" alt="Logo Escuela EEST N°1"
                                     class="h-16 w-auto transition-transform hover:scale-105"
-                                    style="animation: fadeInDown 1.5s forwards;"
-                                >
+                                    style="animation: fadeInDown 1.5s forwards;">
                             </a>
                         </div>
-                        
+
                         <!-- Navigation Links - Reemplaza .nav-links -->
                         <ul class="flex items-center gap-8 ml-12 mr-auto">
                             <li style="animation: fadeInDown 2s forwards;">
                                 <a href="/" class="text-white font-medium relative group">
                                     Inicio
-                                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                                    <span
+                                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                                 </a>
                             </li>
                             <li style="animation: fadeInDown 2.2s forwards;">
                                 <a href="/inscripcion" class="text-white font-medium relative group">
                                     Inscripción
-                                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                                    <span
+                                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                                 </a>
                             </li>
                             <li style="animation: fadeInDown 2.4s forwards;">
                                 <a href="/equipo-de-gestion" class="text-white font-medium relative group">
                                     Equipo de Gestión
-                                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                                    <span
+                                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                                 </a>
                             </li>
                             <li style="animation: fadeInDown 2.6s forwards;">
-                                <a href="https://www.facebook.com/tecnicachivilcoy/" target="_blank" class="text-white font-medium relative group">
+                                <a href="https://www.facebook.com/tecnicachivilcoy/" target="_blank"
+                                    class="text-white font-medium relative group">
                                     Noticias
-                                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                                    <span
+                                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                                 </a>
                             </li>
                             <!-- AuthorizeView simulado - descomentar si necesitas autenticación -->
@@ -168,144 +181,106 @@
                                 </a>
                             </li> -->
                         </ul>
-                        
+
                         <!-- Botones de tema y login -->
                         <div class="flex items-center gap-3" style="animation: fadeInDown 2.5s forwards;">
                             <!-- Toggle Dark Mode -->
-                            <button 
-                                @click="toggleDarkMode()"
+                            <button @click="toggleDarkMode()"
                                 class="p-2 rounded-lg bg-white/20 hover:bg-white/30 text-white transition-all"
-                                :aria-label="darkMode ? 'Activar modo claro' : 'Activar modo oscuro'"
-                            >
+                                :aria-label="darkMode ? 'Activar modo claro' : 'Activar modo oscuro'">
                                 <i class="fas" :class="darkMode ? 'fa-sun' : 'fa-moon'"></i>
                             </button>
-                            
+
                             <!-- Botón Login/Logout - Reemplaza .btn-login -->
-                            <button 
-                                @click="handleAuth()"
+                            <button @click="handleAuth()"
                                 class="px-6 py-2 rounded-lg border-2 border-white text-white font-medium hover:bg-white hover:text-primary transition-all"
-                                x-text="isAuthenticated ? 'Cerrar Sesión' : 'Iniciar Sesión'"
-                            ></button>
+                                x-text="isAuthenticated ? 'Cerrar Sesión' : 'Iniciar Sesión'"></button>
                         </div>
                     </div>
                 </div>
             </nav>
         </header>
-        
+
         <!-- MOBILE NAVBAR & DRAWER - Reemplaza DrawerPage.razor -->
         <!-- Se muestra solo en móvil (< 768px) -->
         <header class="md:hidden sticky top-0 z-40 fade-in-down">
             <nav class="gradient-primary shadow-lg">
                 <div class="flex items-center justify-between px-4 py-3">
-                    
+
                     <!-- Logo Móvil -->
                     <div class="flex-shrink-0">
                         <a href="/">
-                            <img 
-                                src="Images/School_Logo.webp" 
-                                alt="Logo Escuela EEST N°1" 
-                                class="h-12 w-auto"
-                            >
+                            <img src="Images/School_Logo.webp" alt="Logo Escuela EEST N°1" class="h-12 w-auto">
                         </a>
                     </div>
-                    
+
                     <!-- Botones: Dark Mode + Menu -->
                     <div class="flex items-center gap-3">
                         <!-- Toggle Dark Mode Móvil -->
-                        <button 
-                            @click="toggleDarkMode()"
+                        <button @click="toggleDarkMode()"
                             class="p-2 rounded-lg bg-white/20 hover:bg-white/30 text-white transition-all"
-                            :aria-label="darkMode ? 'Activar modo claro' : 'Activar modo oscuro'"
-                        >
+                            :aria-label="darkMode ? 'Activar modo claro' : 'Activar modo oscuro'">
                             <i class="fas" :class="darkMode ? 'fa-sun' : 'fa-moon'"></i>
                         </button>
-                        
+
                         <!-- Botón Menu Hamburguesa -->
-                        <button 
-                            @click="drawerOpen = true"
+                        <button @click="drawerOpen = true"
                             class="p-2 rounded-lg bg-white/20 hover:bg-white/30 text-white text-xl transition-all"
-                            aria-label="Abrir menú"
-                        >
+                            aria-label="Abrir menú">
                             <i class="fas fa-bars"></i>
                         </button>
                     </div>
                 </div>
             </nav>
         </header>
-        
+
         <!-- DRAWER LATERAL MÓVIL - Reemplaza el Drawer de Ant Design -->
-        <div 
-            x-show="drawerOpen" 
-            x-transition:enter="transition ease-out duration-300"
-            x-transition:enter-start="opacity-0"
-            x-transition:enter-end="opacity-100"
-            x-transition:leave="transition ease-in duration-200"
-            x-transition:leave-start="opacity-100"
-            x-transition:leave-end="opacity-0"
-            class="fixed inset-0 bg-black/50 drawer-overlay z-50 md:hidden"
-            @click="drawerOpen = false"
-            style="display: none;"
-        >
+        <div x-show="drawerOpen" x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+            x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0" class="fixed inset-0 bg-black/50 drawer-overlay z-50 md:hidden"
+            @click="drawerOpen = false" style="display: none;">
             <!-- Panel Drawer - se desliza desde la derecha -->
-            <div 
-                @click.stop
-                x-show="drawerOpen"
-                x-transition:enter="transition ease-out duration-300 transform"
-                x-transition:enter-start="translate-x-full"
-                x-transition:enter-end="translate-x-0"
-                x-transition:leave="transition ease-in duration-200 transform"
-                x-transition:leave-start="translate-x-0"
+            <div @click.stop x-show="drawerOpen" x-transition:enter="transition ease-out duration-300 transform"
+                x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0"
+                x-transition:leave="transition ease-in duration-200 transform" x-transition:leave-start="translate-x-0"
                 x-transition:leave-end="translate-x-full"
-                class="absolute right-0 top-0 bottom-0 w-80 max-w-[85vw] gradient-primary shadow-2xl overflow-y-auto"
-            >
+                class="absolute right-0 top-0 bottom-0 w-80 max-w-[85vw] gradient-primary shadow-2xl overflow-y-auto">
                 <!-- Contenido del Drawer - Reemplaza .drawer-content -->
                 <div class="flex flex-col min-h-full p-6">
-                    
+
                     <!-- Logo y Título - Reemplaza .d-logo -->
                     <div class="flex items-center gap-4 mb-8">
-                        <img 
-                            src="Images/School_Logo.webp" 
-                            alt="Logo Escuela" 
-                            class="w-16 h-auto"
-                        >
+                        <img src="Images/School_Logo.webp" alt="Logo Escuela" class="w-16 h-auto">
                         <h1 class="text-2xl font-bold text-white" style="-webkit-text-stroke: 1px rgba(0,0,0,0.3);">
                             EEST1
                         </h1>
                     </div>
-                    
+
                     <!-- Enlaces de Navegación - Reemplaza .d-links -->
                     <nav class="flex-grow">
                         <ul class="space-y-6">
                             <li>
-                                <a 
-                                    href="/" 
-                                    class="text-white text-lg font-medium underline decoration-white hover:text-gray-200 transition-colors block"
-                                >
+                                <a href="/"
+                                    class="text-white text-lg font-medium underline decoration-white hover:text-gray-200 transition-colors block">
                                     Inicio
                                 </a>
                             </li>
                             <li>
-                                <a 
-                                    href="/inscripcion" 
-                                    class="text-white text-lg font-medium underline decoration-white hover:text-gray-200 transition-colors block"
-                                >
+                                <a href="/inscripcion"
+                                    class="text-white text-lg font-medium underline decoration-white hover:text-gray-200 transition-colors block">
                                     Inscripción
                                 </a>
                             </li>
                             <li>
-                                <a 
-                                    href="/equipo-de-gestion" 
-                                    class="text-white text-lg font-medium underline decoration-white hover:text-gray-200 transition-colors block"
-                                >
+                                <a href="/equipo-de-gestion"
+                                    class="text-white text-lg font-medium underline decoration-white hover:text-gray-200 transition-colors block">
                                     Equipo de Gestión
                                 </a>
                             </li>
                             <li>
-                                <a 
-                                    href="https://www.facebook.com/tecnicachivilcoy/" 
-                                    target="_blank"
-                                    class="text-white text-lg font-medium underline decoration-white hover:text-gray-200 transition-colors block"
-                                >
+                                <a href="https://www.facebook.com/tecnicachivilcoy/" target="_blank"
+                                    class="text-white text-lg font-medium underline decoration-white hover:text-gray-200 transition-colors block">
                                     Noticias
                                 </a>
                             </li>
@@ -320,26 +295,24 @@
                             </li> -->
                         </ul>
                     </nav>
-                    
+
                     <!-- Botón Login/Logout al fondo -->
                     <div class="mt-8 pt-6 border-t border-white/30">
-                        <button 
-                            @click="handleAuth(); drawerOpen = false"
+                        <button @click="handleAuth(); drawerOpen = false"
                             class="w-full px-6 py-3 rounded-lg border-2 border-white text-white font-medium hover:bg-white hover:text-primary transition-all"
-                            x-text="isAuthenticated ? 'Cerrar Sesión' : 'Iniciar Sesión'"
-                        ></button>
+                            x-text="isAuthenticated ? 'Cerrar Sesión' : 'Iniciar Sesión'"></button>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <!-- MAIN CONTENT AREA -->
         <main class="flex-grow">
             <div class="container mx-auto px-4 py-8 max-w-7xl" x-data="schoolPage()">
-                
+
                 <!-- Header Section - Reemplaza el header-section con Row/Col de Ant Design -->
-                <div class="rounded-2xl shadow-lg p-8 mb-8 text-white fade-in" 
-                     :class="darkMode ? 'bg-gradient-to-br from-blue-900 to-blue-700' : 'gradient-primary'">
+                <div class="rounded-2xl shadow-lg p-8 mb-8 text-white fade-in"
+                    :class="darkMode ? 'bg-gradient-to-br from-blue-900 to-blue-700' : 'gradient-primary'">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
                         <!-- Texto del Header -->
                         <div class="space-y-4">
@@ -347,59 +320,54 @@
                                 Escuela de Educación Secundaria Técnica Nº1 "Mariano Moreno"
                             </h1>
                             <p class="text-lg md:text-xl leading-relaxed">
-                                Más de <span x-text="yearsPassed"></span> años formando técnicos profesionales en Chivilcoy, Buenos Aires. 
-                                Una institución educativa estatal comprometida con la excelencia académica y la formación integral de nuestros estudiantes.
+                                Más de <span x-text="yearsPassed"></span> años formando técnicos profesionales en
+                                Chivilcoy, Buenos Aires.
+                                Una institución educativa estatal comprometida con la excelencia académica y la
+                                formación integral de nuestros estudiantes.
                             </p>
                         </div>
-                        
+
                         <!-- Imagen de la Escuela -->
                         <div>
-                            <img 
-                                src="Images/School.webp" 
-                                alt="Fachada de la Escuela EEST N°1 Mariano Moreno" 
-                                class="w-full h-64 md:h-80 object-cover rounded-xl shadow-xl"
-                                loading="lazy"
-                            >
+                            <img src="Images/School.webp" alt="Fachada de la Escuela EEST N°1 Mariano Moreno"
+                                class="w-full h-64 md:h-80 object-cover rounded-xl shadow-xl" loading="lazy">
                         </div>
                     </div>
                 </div>
 
                 <!-- Specialties Section -->
-                <div class="rounded-2xl shadow-md p-8 mb-8 fade-in" 
-                     :class="darkMode ? 'bg-gray-800' : 'bg-white'"
-                     style="animation-delay: 0.2s;">
+                <div class="rounded-2xl shadow-md p-8 mb-8 fade-in" :class="darkMode ? 'bg-gray-800' : 'bg-white'"
+                    style="animation-delay: 0.2s;">
                     <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center"
                         :class="darkMode ? 'text-white' : 'text-gray-800'">
                         Nuestras Especialidades
                     </h2>
-                    
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        
+
                         <!-- Tarjeta Informática -->
                         <div class="rounded-xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
-                             :class="darkMode ? 'bg-gray-700 border border-gray-600' : 'bg-white border border-gray-200'">
+                            :class="darkMode ? 'bg-gray-700 border border-gray-600' : 'bg-white border border-gray-200'">
                             <i class="fas fa-laptop-code text-5xl text-blue-500 mb-4"></i>
-                            <h3 class="text-2xl font-bold mb-3"
-                                :class="darkMode ? 'text-white' : 'text-gray-800'">
+                            <h3 class="text-2xl font-bold mb-3" :class="darkMode ? 'text-white' : 'text-gray-800'">
                                 Técnico en Informática Profesional y Personal
                             </h3>
-                            <p class="leading-relaxed"
-                               :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
-                                Formación especializada en tecnologías de la información, programación y sistemas informáticos.
+                            <p class="leading-relaxed" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+                                Formación especializada en tecnologías de la información, programación y sistemas
+                                informáticos.
                             </p>
                         </div>
-                        
+
                         <!-- Tarjeta Electromecánica -->
                         <div class="rounded-xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
-                             :class="darkMode ? 'bg-gray-700 border border-gray-600' : 'bg-white border border-gray-200'">
+                            :class="darkMode ? 'bg-gray-700 border border-gray-600' : 'bg-white border border-gray-200'">
                             <i class="fas fa-tools text-5xl text-blue-500 mb-4"></i>
-                            <h3 class="text-2xl font-bold mb-3"
-                                :class="darkMode ? 'text-white' : 'text-gray-800'">
+                            <h3 class="text-2xl font-bold mb-3" :class="darkMode ? 'text-white' : 'text-gray-800'">
                                 Técnico Electromecánico
                             </h3>
-                            <p class="leading-relaxed"
-                               :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
-                                Preparación integral en sistemas electromecánicos, automatización y mantenimiento industrial.
+                            <p class="leading-relaxed" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+                                Preparación integral en sistemas electromecánicos, automatización y mantenimiento
+                                industrial.
                             </p>
                         </div>
                     </div>
@@ -408,59 +376,47 @@
                 <!-- Carousel Section -->
                 <div class="mb-8 fade-in" style="animation-delay: 0.4s;">
                     <div class="relative max-w-5xl mx-auto" x-data="{ currentSlide: 0 }">
-                        
+
                         <div class="relative overflow-hidden rounded-xl shadow-lg">
                             <div class="relative h-64 md:h-96 lg:h-[400px]">
                                 <template x-for="(image, index) in images" :key="index">
-                                    <div 
-                                        x-show="currentSlide === index"
+                                    <div x-show="currentSlide === index"
                                         x-transition:enter="transition ease-out duration-300"
                                         x-transition:enter-start="opacity-0 transform translate-x-full"
                                         x-transition:enter-end="opacity-100 transform translate-x-0"
                                         x-transition:leave="transition ease-in duration-300"
                                         x-transition:leave-start="opacity-100 transform translate-x-0"
                                         x-transition:leave-end="opacity-0 transform -translate-x-full"
-                                        class="absolute inset-0"
-                                    >
-                                        <img 
-                                            :src="image" 
-                                            :alt="'Imagen de la escuela ' + (index + 1)"
-                                            class="w-full h-full object-cover"
-                                            loading="lazy"
-                                        >
+                                        class="absolute inset-0">
+                                        <img :src="image" :alt="'Imagen de la escuela ' + (index + 1)"
+                                            class="w-full h-full object-cover" loading="lazy">
                                     </div>
                                 </template>
                             </div>
-                            
+
                             <!-- Botón Anterior -->
-                            <button 
-                                @click="currentSlide = currentSlide === 0 ? images.length - 1 : currentSlide - 1"
+                            <button @click="currentSlide = currentSlide === 0 ? images.length - 1 : currentSlide - 1"
                                 class="absolute left-4 top-1/2 -translate-y-1/2 rounded-full p-3 shadow-lg transition-all duration-200 hover:scale-110"
                                 :class="darkMode ? 'bg-gray-800/80 hover:bg-gray-800 text-white' : 'bg-white/80 hover:bg-white text-gray-800'"
-                                aria-label="Imagen anterior"
-                            >
+                                aria-label="Imagen anterior">
                                 <i class="fas fa-chevron-left"></i>
                             </button>
-                            
+
                             <!-- Botón Siguiente -->
-                            <button 
-                                @click="currentSlide = currentSlide === images.length - 1 ? 0 : currentSlide + 1"
+                            <button @click="currentSlide = currentSlide === images.length - 1 ? 0 : currentSlide + 1"
                                 class="absolute right-4 top-1/2 -translate-y-1/2 rounded-full p-3 shadow-lg transition-all duration-200 hover:scale-110"
                                 :class="darkMode ? 'bg-gray-800/80 hover:bg-gray-800 text-white' : 'bg-white/80 hover:bg-white text-gray-800'"
-                                aria-label="Siguiente imagen"
-                            >
+                                aria-label="Siguiente imagen">
                                 <i class="fas fa-chevron-right"></i>
                             </button>
-                            
+
                             <!-- Indicadores -->
                             <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
                                 <template x-for="(image, index) in images" :key="'dot-' + index">
-                                    <button 
-                                        @click="currentSlide = index"
+                                    <button @click="currentSlide = index"
                                         :class="currentSlide === index ? 'bg-white w-8' : 'bg-white/50 w-3'"
                                         class="h-3 rounded-full transition-all duration-300"
-                                        :aria-label="'Ir a imagen ' + (index + 1)"
-                                    ></button>
+                                        :aria-label="'Ir a imagen ' + (index + 1)"></button>
                                 </template>
                             </div>
                         </div>
@@ -469,45 +425,48 @@
 
                 <!-- Mission, Vision, Values Section -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 fade-in" style="animation-delay: 0.6s;">
-                    
+
                     <!-- Tarjeta Misión -->
                     <div class="rounded-xl shadow-md p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
-                         :class="darkMode ? 'bg-gray-800' : 'bg-white'">
+                        :class="darkMode ? 'bg-gray-800' : 'bg-white'">
                         <h3 class="text-2xl font-bold text-blue-500 mb-4">
                             Misión
                         </h3>
-                        <p class="leading-relaxed"
-                           :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
-                            Nuestra misión es proporcionar una educación técnica de alta calidad que prepare a los estudiantes 
-                            para enfrentar los desafíos del mundo laboral y académico. Nos esforzamos por formar profesionales 
+                        <p class="leading-relaxed" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+                            Nuestra misión es proporcionar una educación técnica de alta calidad que prepare a los
+                            estudiantes
+                            para enfrentar los desafíos del mundo laboral y académico. Nos esforzamos por formar
+                            profesionales
                             competentes y comprometidos con el desarrollo de la comunidad.
                         </p>
                     </div>
-                    
+
                     <!-- Tarjeta Visión -->
                     <div class="rounded-xl shadow-md p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
-                         :class="darkMode ? 'bg-gray-800' : 'bg-white'">
+                        :class="darkMode ? 'bg-gray-800' : 'bg-white'">
                         <h3 class="text-2xl font-bold text-blue-500 mb-4">
                             Visión
                         </h3>
-                        <p class="leading-relaxed"
-                           :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
-                            Aspiramos a ser una institución líder en educación técnica, reconocida por la excelencia de nuestros 
-                            programas académicos y la calidad de nuestros egresados. Buscamos innovar constantemente en nuestros 
+                        <p class="leading-relaxed" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+                            Aspiramos a ser una institución líder en educación técnica, reconocida por la excelencia de
+                            nuestros
+                            programas académicos y la calidad de nuestros egresados. Buscamos innovar constantemente en
+                            nuestros
                             métodos de enseñanza para adaptarnos a las demandas del siglo XXI.
                         </p>
                     </div>
-                    
+
                     <!-- Tarjeta Valores -->
                     <div class="rounded-xl shadow-md p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
-                         :class="darkMode ? 'bg-gray-800' : 'bg-white'">
+                        :class="darkMode ? 'bg-gray-800' : 'bg-white'">
                         <h3 class="text-2xl font-bold text-blue-500 mb-4">
                             Valores
                         </h3>
-                        <p class="leading-relaxed"
-                           :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
-                            Promovemos valores como la responsabilidad, el respeto, la solidaridad y el compromiso, fundamentales 
-                            para el desarrollo integral de nuestros estudiantes y su desempeño en la sociedad como ciudadanos 
+                        <p class="leading-relaxed" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+                            Promovemos valores como la responsabilidad, el respeto, la solidaridad y el compromiso,
+                            fundamentales
+                            para el desarrollo integral de nuestros estudiantes y su desempeño en la sociedad como
+                            ciudadanos
                             conscientes y éticos.
                         </p>
                     </div>
@@ -517,44 +476,42 @@
                 <div class="mb-8 fade-in" style="animation-delay: 0.8s;">
                     <div class="max-w-4xl mx-auto">
                         <div class="relative bg-black rounded-xl shadow-xl overflow-hidden aspect-video-custom">
-                            <iframe 
-                                src="https://www.youtube.com/embed/_MWoRgv3q1U?si=qIY-ndjwMFX3p3a4"
+                            <iframe src="https://www.youtube.com/embed/_MWoRgv3q1U?si=qIY-ndjwMFX3p3a4"
                                 class="absolute inset-0 w-full h-full"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen
-                                loading="lazy"
-                                title="Video institucional EEST N°1"
-                            ></iframe>
+                                allowfullscreen loading="lazy" title="Video institucional EEST N°1"></iframe>
                         </div>
                     </div>
                 </div>
 
             </div>
         </main>
-        
+
         <!-- FOOTER - Reemplaza FooterPage.razor -->
         <footer class="gradient-primary text-white py-8 mt-auto">
             <div class="container mx-auto px-4 max-w-7xl">
-                
+
                 <!-- Footer Content - 3 columnas -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
-                    
+
                     <!-- Sección Escuela - Reemplaza #escuela -->
                     <div class="fade-in-up text-center md:text-left" style="animation-delay: 0.1s;">
                         <h5 class="text-xl font-bold mb-4 pb-2 border-b border-white/30 relative">
                             EEST Nº 1 "Mariano Moreno"
-                            <span class="absolute bottom-0 left-1/2 md:left-0 transform -translate-x-1/2 md:translate-x-0 w-12 h-0.5 bg-white"></span>
+                            <span
+                                class="absolute bottom-0 left-1/2 md:left-0 transform -translate-x-1/2 md:translate-x-0 w-12 h-0.5 bg-white"></span>
                         </h5>
                         <p class="text-white/90 leading-relaxed">
                             Escuela de Educación Secundaria Técnica Nº1 "Mariano Moreno" de Chivilcoy.
                         </p>
                     </div>
-                    
+
                     <!-- Sección Contacto - Reemplaza #contacto -->
                     <div class="fade-in-up text-center md:text-left" style="animation-delay: 0.3s;">
                         <h5 class="text-xl font-bold mb-4 pb-2 border-b border-white/30 relative">
                             Información de Contacto
-                            <span class="absolute bottom-0 left-1/2 md:left-0 transform -translate-x-1/2 md:translate-x-0 w-12 h-0.5 bg-white"></span>
+                            <span
+                                class="absolute bottom-0 left-1/2 md:left-0 transform -translate-x-1/2 md:translate-x-0 w-12 h-0.5 bg-white"></span>
                         </h5>
                         <ul class="space-y-3 text-white/90">
                             <li class="flex items-start justify-center md:justify-start gap-2">
@@ -571,34 +528,29 @@
                             </li>
                         </ul>
                     </div>
-                    
+
                     <!-- Sección Redes Sociales - Reemplaza #redes -->
                     <div class="fade-in-up text-center md:text-left" style="animation-delay: 0.5s;">
                         <h5 class="text-xl font-bold mb-4 pb-2 border-b border-white/30 relative">
                             Redes Sociales
-                            <span class="absolute bottom-0 left-1/2 md:left-0 transform -translate-x-1/2 md:translate-x-0 w-12 h-0.5 bg-white"></span>
+                            <span
+                                class="absolute bottom-0 left-1/2 md:left-0 transform -translate-x-1/2 md:translate-x-0 w-12 h-0.5 bg-white"></span>
                         </h5>
                         <div class="flex justify-center md:justify-start gap-4">
-                            <a 
-                                href="https://www.facebook.com/tecnicachivilcoy/" 
-                                target="_blank"
+                            <a href="https://www.facebook.com/tecnicachivilcoy/" target="_blank"
                                 class="text-3xl text-white hover:text-gray-200 transition-all hover:scale-110"
-                                aria-label="Facebook"
-                            >
+                                aria-label="Facebook">
                                 <i class="bi bi-facebook"></i>
                             </a>
-                            <a 
-                                href="https://www.instagram.com/eest_n1_chivilcoy/" 
-                                target="_blank"
+                            <a href="https://www.instagram.com/eest_n1_chivilcoy/" target="_blank"
                                 class="text-3xl text-white hover:text-gray-200 transition-all hover:scale-110"
-                                aria-label="Instagram"
-                            >
+                                aria-label="Instagram">
                                 <i class="bi bi-instagram"></i>
                             </a>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Footer Bottom - Copyright -->
                 <div class="border-t border-white/30 pt-6 text-center fade-in-up" style="animation-delay: 0.7s;">
                     <p class="text-white/90">
@@ -607,7 +559,7 @@
                 </div>
             </div>
         </footer>
-        
+
     </div>
 
     <!-- Alpine.js Component Logic -->
@@ -617,48 +569,48 @@
             return {
                 // Estado del modo oscuro
                 darkMode: false,
-                
+
                 // Estado de autenticación (simulado - reemplazar con lógica real)
                 isAuthenticated: false,
-                
+
                 // Estado del drawer móvil
                 drawerOpen: false,
-                
+
                 // Inicialización
                 init() {
                     // Detectar preferencia del sistema
                     this.detectSystemTheme();
-                    
+
                     // Aplicar tema guardado (si existe)
                     const savedTheme = localStorage.getItem('theme');
                     if (savedTheme) {
                         this.darkMode = savedTheme === 'dark';
                     }
-                    
+
                     // Listener para cambios en preferencias del sistema
                     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
                         if (!localStorage.getItem('theme')) {
                             this.darkMode = e.matches;
                         }
                     });
-                    
+
                     // Verificar autenticación (reemplazar con lógica real)
                     this.checkAuth();
                 },
-                
+
                 // Detectar tema del sistema operativo
                 detectSystemTheme() {
                     if (!localStorage.getItem('theme')) {
                         this.darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
                     }
                 },
-                
+
                 // Toggle modo oscuro
                 toggleDarkMode() {
                     this.darkMode = !this.darkMode;
                     localStorage.setItem('theme', this.darkMode ? 'dark' : 'light');
                 },
-                
+
                 // Manejar autenticación
                 handleAuth() {
                     if (this.isAuthenticated) {
@@ -669,7 +621,7 @@
                         window.location.href = '/Auth/Login';
                     }
                 },
-                
+
                 // Verificar estado de autenticación (simulado)
                 checkAuth() {
                     // REEMPLAZAR CON LÓGICA REAL DE AUTENTICACIÓN
@@ -679,7 +631,7 @@
                 }
             }
         }
-        
+
         // Componente de la página principal - Maneja carousel y cálculo de años
         function schoolPage() {
             return {
@@ -696,36 +648,36 @@
                     'Images/ImagesIndex/9.jpg',
                     'Images/ImagesIndex/10.jpg'
                 ],
-                
+
                 // Años desde la fundación
                 yearsPassed: 0,
-                
+
                 // Inicialización
                 init() {
                     this.calculateYears();
                     this.startAutoplay();
                 },
-                
+
                 // Calcular años desde la fundación
                 calculateYears() {
                     const foundationDate = new Date(1910, 4, 12); // Mayo = mes 4 (0-indexed)
                     const currentDate = new Date();
-                    
+
                     let years = currentDate.getFullYear() - foundationDate.getFullYear();
-                    
+
                     // Ajustar si no ha llegado la fecha de aniversario este año
-                    const hasPassedAnniversary = 
+                    const hasPassedAnniversary =
                         currentDate.getMonth() > foundationDate.getMonth() ||
-                        (currentDate.getMonth() === foundationDate.getMonth() && 
-                         currentDate.getDate() >= foundationDate.getDate());
-                    
+                        (currentDate.getMonth() === foundationDate.getMonth() &&
+                            currentDate.getDate() >= foundationDate.getDate());
+
                     if (!hasPassedAnniversary) {
                         years--;
                     }
-                    
+
                     this.yearsPassed = years;
                 },
-                
+
                 // Auto-play para el carousel
                 startAutoplay() {
                     setInterval(() => {
@@ -735,7 +687,7 @@
                 }
             }
         }
-        
+
         // Listener para auto-advance del carousel
         window.addEventListener('next-slide', () => {
             const carousels = document.querySelectorAll('[x-data*="currentSlide"]');
@@ -750,4 +702,5 @@
         });
     </script>
 </body>
+
 </html>
