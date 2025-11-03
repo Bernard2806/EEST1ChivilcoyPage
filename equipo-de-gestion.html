@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Equipo de Gestión - EEST N°1 "Mariano Moreno"</title>
     
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="Images/School_Logo.webp" type="image/x-icon">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -154,8 +157,14 @@
                                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                                 </a>
                             </li>
+                            <li style="animation: fadeInDown 2.3s forwards;">
+                                <a :href="reservasUrl" class="text-white font-medium relative group">
+                                    Reservas
+                                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                                </a>
+                            </li>
                             <li style="animation: fadeInDown 2.4s forwards;">
-                                <a href="/equipo-de-gestion" class="text-white font-medium relative group">
+                                <a href="/equipo-de-gestion.html" class="text-white font-medium relative group">
                                     Equipo de Gestión
                                     <span class="absolute bottom-0 left-0 w-full h-0.5 bg-white"></span>
                                 </a>
@@ -179,12 +188,10 @@
                                 <i class="fas" :class="darkMode ? 'fa-sun' : 'fa-moon'"></i>
                             </button>
                             
-                            <!-- Botón Login/Logout -->
-                            <button 
-                                @click="handleAuth()"
-                                class="px-6 py-2 rounded-lg border-2 border-white text-white font-medium hover:bg-white hover:text-primary transition-all"
-                                x-text="isAuthenticated ? 'Cerrar Sesión' : 'Iniciar Sesión'"
-                            ></button>
+                            <!-- Botón Sistema (reemplaza lógica de login). Mantiene la estética del botón anterior -->
+                            <a :href="sistemaUrl"
+                                class="px-6 py-2 rounded-lg border-2 border-white text-white font-medium hover:bg-white hover:text-primary transition-all text-center"
+                                aria-label="Ir al sistema">Sistema</a>
                         </div>
                     </div>
                 </div>
@@ -291,7 +298,15 @@
                             </li>
                             <li>
                                 <a 
-                                    href="/equipo-de-gestion" 
+                                    :href="reservasUrl" 
+                                    class="text-white text-lg font-medium underline decoration-white hover:text-gray-200 transition-colors block"
+                                >
+                                    Reservas
+                                </a>
+                            </li>
+                            <li>
+                                <a 
+                                    href="/equipo-de-gestion.html" 
                                     class="text-white text-lg font-bold underline decoration-white block"
                                 >
                                     Equipo de Gestión
@@ -311,11 +326,9 @@
                     
                     <!-- Botón Login/Logout al fondo -->
                     <div class="mt-8 pt-6 border-t border-white/30">
-                        <button 
-                            @click="handleAuth(); drawerOpen = false"
-                            class="w-full px-6 py-3 rounded-lg border-2 border-white text-white font-medium hover:bg-white hover:text-primary transition-all"
-                            x-text="isAuthenticated ? 'Cerrar Sesión' : 'Iniciar Sesión'"
-                        ></button>
+                        <a :href="sistemaUrl" @click="drawerOpen = false"
+                            class="w-full px-6 py-3 rounded-lg border-2 border-white text-white font-medium hover:bg-white hover:text-primary transition-all text-center"
+                            aria-label="Ir al sistema móvil">Sistema</a>
                     </div>
                 </div>
             </div>
@@ -589,7 +602,7 @@
                 <!-- Footer Bottom - Copyright -->
                 <div class="border-t border-white/30 pt-6 text-center fade-in-up" style="animation-delay: 0.7s;">
                     <p class="text-white/90">
-                        © 7mo 'B' - 2024 | EEST Nº 1 "Mariano Moreno"
+                        © <span id="current-year"></span> - Escuela de Educación Secundaria Técnica Nº 1 "Mariano Moreno"
                     </p>
                 </div>
             </div>
@@ -599,66 +612,53 @@
 
     <!-- Alpine.js Component Logic -->
     <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
         // Layout Principal - Maneja dark mode, autenticación y drawer
         function appLayout() {
             return {
                 // Estado del modo oscuro
                 darkMode: false,
-                
-                // Estado de autenticación (simulado)
-                isAuthenticated: false,
-                
+
+                // URL configurable para la sección de Reservas. Modifícala aquí según necesites.
+                reservasUrl: 'https://reserva.great-site.net/',
+
+                // URL configurable para acceder al sistema.
+                sistemaUrl: '/sge_no_disponible.html',
+
                 // Estado del drawer móvil
                 drawerOpen: false,
-                
+
                 // Inicialización
                 init() {
                     // Detectar preferencia del sistema
                     this.detectSystemTheme();
-                    
+
                     // Aplicar tema guardado (si existe)
                     const savedTheme = localStorage.getItem('theme');
                     if (savedTheme) {
                         this.darkMode = savedTheme === 'dark';
                     }
-                    
+
                     // Listener para cambios en preferencias del sistema
                     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
                         if (!localStorage.getItem('theme')) {
                             this.darkMode = e.matches;
                         }
                     });
-                    
-                    // Verificar autenticación
-                    this.checkAuth();
                 },
-                
+
                 // Detectar tema del sistema operativo
                 detectSystemTheme() {
                     if (!localStorage.getItem('theme')) {
                         this.darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
                     }
                 },
-                
+
                 // Toggle modo oscuro
                 toggleDarkMode() {
                     this.darkMode = !this.darkMode;
                     localStorage.setItem('theme', this.darkMode ? 'dark' : 'light');
-                },
-                
-                // Manejar autenticación
-                handleAuth() {
-                    if (this.isAuthenticated) {
-                        window.location.href = '/Auth/Logout';
-                    } else {
-                        window.location.href = '/Auth/Login';
-                    }
-                },
-                
-                // Verificar estado de autenticación (simulado)
-                checkAuth() {
-                    // REEMPLAZAR CON LÓGICA REAL DE AUTENTICACIÓN
-                    this.isAuthenticated = false;
                 }
             }
         }
