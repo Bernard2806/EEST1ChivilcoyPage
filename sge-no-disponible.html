@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema en Desarrollo - EEST N°1 "Mariano Moreno"</title>
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="Images/School_Logo.webp" type="image/x-icon">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Config para Dark Mode -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            light: '#A2C1DD',
+                            DEFAULT: '#096dd9',
+                            dark: '#0050b3'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Alpine.js para interactividad -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Font Awesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Animaciones personalizadas */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* Gradientes personalizados */
+        .gradient-primary {
+            background: linear-gradient(135deg, #A2C1DD 0%, #096dd9 100%);
+        }
+
+        .gradient-bg-light {
+            background: linear-gradient(to bottom, #ffffff, #f0f2f5);
+        }
+
+        .gradient-bg-dark {
+            background: linear-gradient(to bottom, #1a1a1a, #2d2d2d);
+        }
+
+        /* Smooth transitions para dark mode */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen" x-data="{ darkMode: false }" x-init="
+    // Detectar preferencia del sistema
+    darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // Aplicar tema guardado
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        darkMode = savedTheme === 'dark';
+    }
+" :class="darkMode ? 'dark' : ''">
+
+    <!-- Wrapper Principal con color de fondo dinámico -->
+    <div class="min-h-screen flex flex-col items-center justify-center px-4 py-12"
+        :class="darkMode ? 'gradient-bg-dark' : 'gradient-bg-light'">
+
+        <!-- Toggle Dark Mode - Esquina superior derecha -->
+        <div class="fixed top-6 right-6 z-50">
+            <button @click="darkMode = !darkMode; localStorage.setItem('theme', darkMode ? 'dark' : 'light')"
+                class="p-3 rounded-lg bg-white/20 hover:bg-white/30 shadow-lg transition-all hover:scale-110"
+                :class="darkMode ? 'text-white' : 'text-gray-800'"
+                :aria-label="darkMode ? 'Activar modo claro' : 'Activar modo oscuro'">
+                <i class="fas text-xl" :class="darkMode ? 'fa-sun' : 'fa-moon'"></i>
+            </button>
+        </div>
+
+        <!-- Contenido Principal -->
+        <div class="max-w-2xl w-full text-center fade-in">
+            
+            <!-- Logo -->
+            <div class="mb-8 flex justify-center">
+                <img src="Images/System_Logo.webp" alt="Logo EEST N°1" class="h-32 w-auto pulse-animation">
+            </div>
+
+            <!-- Tarjeta Principal -->
+            <div class="rounded-2xl shadow-2xl p-8 md:p-12"
+                :class="darkMode ? 'bg-gray-800' : 'bg-white'">
+                
+                <!-- Icono de Construcción -->
+                <div class="mb-6">
+                    <i class="fas fa-tools text-6xl md:text-7xl text-blue-500 pulse-animation"></i>
+                </div>
+
+                <!-- Título -->
+                <h1 class="text-3xl md:text-4xl font-bold mb-4"
+                    :class="darkMode ? 'text-white' : 'text-gray-800'">
+                    Sistema en Desarrollo
+                </h1>
+
+                <!-- Mensaje Principal -->
+                <p class="text-lg md:text-xl mb-6"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+                    Estamos trabajando en el Sistema de Gestión Escolar para brindarte la mejor experiencia.
+                </p>
+
+                <!-- Mensaje Secundario -->
+                <div class="mb-8 p-4 rounded-lg"
+                    :class="darkMode ? 'bg-blue-900/30 border border-blue-700' : 'bg-blue-50 border border-blue-200'">
+                    <p class="text-base"
+                        :class="darkMode ? 'text-blue-300' : 'text-blue-800'">
+                        <i class="fas fa-info-circle mr-2"></i>
+                        El sistema estará disponible próximamente. Gracias por tu paciencia.
+                    </p>
+                </div>
+
+                <!-- Botón Volver al Inicio -->
+                <a href="index.html"
+                    class="inline-flex items-center gap-3 px-8 py-4 rounded-lg font-semibold text-lg shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl gradient-primary text-white">
+                    <i class="fas fa-home"></i>
+                    Volver al Inicio
+                </a>
+            </div>
+
+            <!-- Información de Contacto -->
+            <div class="mt-8 p-6 rounded-xl"
+                :class="darkMode ? 'bg-gray-800/50' : 'bg-white/50'">
+                <p class="text-sm"
+                    :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
+                    ¿Necesitas ayuda? Contacta con nosotros:
+                </p>
+                <p class="mt-2 font-medium"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                    <i class="fas fa-envelope mr-2"></i>
+                    tecnica1chivilcoy@abc.gob.ar
+                </p>
+                <p class="mt-1 font-medium"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                    <i class="fas fa-phone mr-2"></i>
+                    2346-431330
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Footer Simple -->
+        <footer class="mt-12 text-center">
+            <p class="text-sm"
+                :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
+                © <span x-text="new Date().getFullYear()"></span> - Escuela de Educación Secundaria Técnica Nº 1 "Mariano Moreno"
+            </p>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
