@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio - EEST N°1 "Mariano Moreno"</title>
 
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="Images/School_Logo.webp" type="image/x-icon">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -476,10 +479,13 @@
                 <div class="mb-8 fade-in" style="animation-delay: 0.8s;">
                     <div class="max-w-4xl mx-auto">
                         <div class="relative bg-black rounded-xl shadow-xl overflow-hidden aspect-video-custom">
-                            <iframe src="https://www.youtube.com/embed/_MWoRgv3q1U?si=qIY-ndjwMFX3p3a4"
-                                class="absolute inset-0 w-full h-full"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen loading="lazy" title="Video institucional EEST N°1"></iframe>
+                            <!-- Video local: coloca tu archivo dentro de la carpeta "Video" -->
+                            <video class="absolute inset-0 w-full h-full object-cover" controls playsinline preload="metadata" poster="Images/School.webp">
+                                <source src="Video/institucional.mp4" type="video/mp4">
+                                <!-- Opcional: añade una versión .webm por compatibilidad -->
+                                <source src="Video/institucional.webm" type="video/webm">
+                                Tu navegador no soporta la reproducción de video. Puedes descargarlo <a href="Video/institucional.mp4">aquí</a>.
+                            </video>
                         </div>
                     </div>
                 </div>
