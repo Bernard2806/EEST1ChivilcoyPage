@@ -484,11 +484,13 @@
                     <div class="max-w-4xl mx-auto">
                         <div class="relative bg-black rounded-xl shadow-xl overflow-hidden aspect-video-custom">
                             <!-- Video local: coloca tu archivo dentro de la carpeta "Video" -->
-                            <video class="absolute inset-0 w-full h-full object-cover" controls playsinline preload="metadata" poster="Images/School.webp">
+                            <video class="absolute inset-0 w-full h-full object-cover" controls playsinline
+                                preload="metadata" poster="Images/School.webp">
                                 <source src="Video/institucional.mp4" type="video/mp4">
                                 <!-- Opcional: añade una versión .webm por compatibilidad -->
                                 <source src="Video/institucional.webm" type="video/webm">
-                                Tu navegador no soporta la reproducción de video. Puedes descargarlo <a href="Video/institucional.mp4">aquí</a>.
+                                Tu navegador no soporta la reproducción de video. Puedes descargarlo <a
+                                    href="Video/institucional.mp4">aquí</a>.
                             </video>
                         </div>
                     </div>
@@ -564,7 +566,7 @@
                 <!-- Footer Bottom - Copyright -->
                 <div class="border-t border-white/30 pt-6 text-center fade-in-up" style="animation-delay: 0.7s;">
                     <p class="text-white/90">
-                        © 7mo 'B' - 2024 | EEST Nº 1 "Mariano Moreno"
+                        © <span id="current-year"></span> - Escuela de Educación Secundaria Técnica Nº 1 “Mariano Moreno”
                     </p>
                 </div>
             </div>
@@ -574,6 +576,8 @@
 
     <!-- Alpine.js Component Logic -->
     <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
         // Layout Principal - Maneja dark mode, autenticación y drawer
         function appLayout() {
             return {
