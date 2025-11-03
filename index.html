@@ -201,10 +201,10 @@
                                 <i class="fas" :class="darkMode ? 'fa-sun' : 'fa-moon'"></i>
                             </button>
 
-                            <!-- Botón Login/Logout - Reemplaza .btn-login -->
-                            <button @click="handleAuth()"
-                                class="px-6 py-2 rounded-lg border-2 border-white text-white font-medium hover:bg-white hover:text-primary transition-all"
-                                x-text="isAuthenticated ? 'Cerrar Sesión' : 'Iniciar Sesión'"></button>
+                            <!-- Botón Sistema (reemplaza lógica de login). Mantiene la estética del botón anterior -->
+                            <a :href="sistemaUrl"
+                                class="px-6 py-2 rounded-lg border-2 border-white text-white font-medium hover:bg-white hover:text-primary transition-all text-center"
+                                aria-label="Ir al sistema">Sistema</a>
                         </div>
                     </div>
                 </div>
@@ -300,23 +300,14 @@
                                     Noticias
                                 </a>
                             </li>
-                            <!-- AuthorizeView simulado -->
-                            <!-- <li x-show="isAuthenticated">
-                                <a 
-                                    href="/SGE/index" 
-                                    class="text-white text-lg font-medium underline decoration-white hover:text-gray-200 transition-colors block"
-                                >
-                                    Gestión Escolar
-                                </a>
-                            </li> -->
                         </ul>
                     </nav>
 
                     <!-- Botón Login/Logout al fondo -->
                     <div class="mt-8 pt-6 border-t border-white/30">
-                        <button @click="handleAuth(); drawerOpen = false"
-                            class="w-full px-6 py-3 rounded-lg border-2 border-white text-white font-medium hover:bg-white hover:text-primary transition-all"
-                            x-text="isAuthenticated ? 'Cerrar Sesión' : 'Iniciar Sesión'"></button>
+                        <a :href="sistemaUrl" @click="drawerOpen = false"
+                            class="w-full px-6 py-3 rounded-lg border-2 border-white text-white font-medium hover:bg-white hover:text-primary transition-all text-center"
+                            aria-label="Ir al sistema móvil">Sistema</a>
                     </div>
                 </div>
             </div>
@@ -595,6 +586,9 @@
                 // URL configurable para la sección de Reservas. Modifícala aquí según necesites.
                 reservasUrl: 'https://reserva.great-site.net/',
 
+                // URL configurable para acceder al sistema.
+                sistemaUrl: '/sge_no_disponible.html',
+
                 // Estado del drawer móvil
                 drawerOpen: false,
 
@@ -615,9 +609,6 @@
                             this.darkMode = e.matches;
                         }
                     });
-
-                    // Verificar autenticación (reemplazar con lógica real)
-                    this.checkAuth();
                 },
 
                 // Detectar tema del sistema operativo
@@ -631,25 +622,6 @@
                 toggleDarkMode() {
                     this.darkMode = !this.darkMode;
                     localStorage.setItem('theme', this.darkMode ? 'dark' : 'light');
-                },
-
-                // Manejar autenticación
-                handleAuth() {
-                    if (this.isAuthenticated) {
-                        // Redirigir a logout
-                        window.location.href = '/Auth/Logout';
-                    } else {
-                        // Redirigir a login
-                        window.location.href = '/Auth/Login';
-                    }
-                },
-
-                // Verificar estado de autenticación (simulado)
-                checkAuth() {
-                    // REEMPLAZAR CON LÓGICA REAL DE AUTENTICACIÓN
-                    // Ejemplo: verificar token en localStorage o cookie
-                    // this.isAuthenticated = !!localStorage.getItem('authToken');
-                    this.isAuthenticated = false;
                 }
             }
         }
