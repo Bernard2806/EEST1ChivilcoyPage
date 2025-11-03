@@ -161,6 +161,13 @@
                                         class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                                 </a>
                             </li>
+                            <li style="animation: fadeInDown 2.3s forwards;">
+                                <a :href="reservasUrl" class="text-white font-medium relative group">
+                                    Reservas
+                                    <span
+                                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                                </a>
+                            </li>
                             <li style="animation: fadeInDown 2.4s forwards;">
                                 <a href="/equipo-de-gestion" class="text-white font-medium relative group">
                                     Equipo de Gestión
@@ -273,6 +280,12 @@
                                 <a href="/inscripcion"
                                     class="text-white text-lg font-medium underline decoration-white hover:text-gray-200 transition-colors block">
                                     Inscripción
+                                </a>
+                            </li>
+                            <li>
+                                <a :href="reservasUrl"
+                                    class="text-white text-lg font-medium underline decoration-white hover:text-gray-200 transition-colors block">
+                                    Reservas
                                 </a>
                             </li>
                             <li>
@@ -578,6 +591,9 @@
 
                 // Estado de autenticación (simulado - reemplazar con lógica real)
                 isAuthenticated: false,
+
+                // URL configurable para la sección de Reservas. Modifícala aquí según necesites.
+                reservasUrl: 'https://reserva.great-site.net/',
 
                 // Estado del drawer móvil
                 drawerOpen: false,
