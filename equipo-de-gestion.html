@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Equipo de Gestión - EEST N°1 "Mariano Moreno"</title>
-    
+
     <!-- Favicons -->
     <link rel="shortcut icon" href="Images/School_Logo.webp" type="image/x-icon">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Tailwind Config para Dark Mode -->
     <script>
         tailwind.config = {
@@ -28,16 +29,16 @@
             }
         }
     </script>
-    
+
     <!-- Alpine.js para interactividad -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
+
     <!-- Font Awesome para íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Bootstrap Icons (para el footer) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    
+
     <style>
         /* Animaciones personalizadas */
         @keyframes fadeInDown {
@@ -45,68 +46,77 @@
                 opacity: 0;
                 transform: translateY(-20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
+
         .fade-in-down {
             animation: fadeInDown 1s ease-out;
         }
-        
+
         .fade-in-up {
             animation: fadeInUp 1s ease-out;
         }
-        
+
         .fade-in {
             animation: fadeIn 0.6s ease-out;
         }
-        
+
         /* Gradientes personalizados */
         .gradient-primary {
             background: linear-gradient(135deg, #A2C1DD 0%, #096dd9 100%);
         }
-        
+
         .gradient-bg-light {
             background: linear-gradient(to bottom, #ffffff, #f0f2f5);
         }
-        
+
         .gradient-bg-dark {
             background: linear-gradient(to bottom, #1a1a1a, #2d2d2d);
         }
-        
+
         /* Estilos para el drawer móvil */
         .drawer-overlay {
             backdrop-filter: blur(4px);
         }
-        
+
         /* Smooth transitions para dark mode */
         * {
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
-        
+
         /* Evitar transiciones en animaciones específicas */
         .no-transition {
             transition: none !important;
         }
-        
+
         /* Línea decorativa para títulos de sección */
         .section-title-line::after {
             content: '';
@@ -120,41 +130,41 @@
         }
     </style>
 </head>
+
 <body class="min-h-screen" x-data="appLayout()" x-init="init()" :class="darkMode ? 'dark' : ''">
-    
+
     <!-- Wrapper Principal con color de fondo dinámico -->
     <div class="min-h-screen flex flex-col" :class="darkMode ? 'gradient-bg-dark' : 'gradient-bg-light'">
-        
+
         <!-- NAVBAR DESKTOP - Se oculta en móvil (< 768px) -->
         <header class="hidden md:block sticky top-0 z-40 fade-in-down">
             <nav class="gradient-primary shadow-lg">
                 <div class="container mx-auto px-4 py-3">
                     <div class="flex items-center justify-between">
-                        
+
                         <!-- Logo -->
                         <div class="flex-shrink-0">
                             <a href="/" class="block">
-                                <img 
-                                    src="Images/School_Logo.webp" 
-                                    alt="Logo Escuela EEST N°1" 
+                                <img src="Images/School_Logo.webp" alt="Logo Escuela EEST N°1"
                                     class="h-16 w-auto transition-transform hover:scale-105"
-                                    style="animation: fadeInDown 1.5s forwards;"
-                                >
+                                    style="animation: fadeInDown 1.5s forwards;">
                             </a>
                         </div>
-                        
+
                         <!-- Navigation Links -->
                         <ul class="flex items-center gap-8 ml-12 mr-auto">
                             <li style="animation: fadeInDown 2s forwards;">
                                 <a href="/" class="text-white font-medium relative group">
                                     Inicio
-                                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                                    <span
+                                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                                 </a>
                             </li>
                             <li style="animation: fadeInDown 2.3s forwards;">
                                 <a :href="reservasUrl" class="text-white font-medium relative group">
                                     Reservas
-                                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                                    <span
+                                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                                 </a>
                             </li>
                             <li style="animation: fadeInDown 2.4s forwards;">
@@ -164,24 +174,24 @@
                                 </a>
                             </li>
                             <li style="animation: fadeInDown 2.6s forwards;">
-                                <a href="https://www.facebook.com/tecnicachivilcoy/" target="_blank" class="text-white font-medium relative group">
+                                <a href="https://www.facebook.com/tecnicachivilcoy/" target="_blank"
+                                    class="text-white font-medium relative group">
                                     Noticias
-                                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                                    <span
+                                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                                 </a>
                             </li>
                         </ul>
-                        
+
                         <!-- Botones de tema y login -->
                         <div class="flex items-center gap-3" style="animation: fadeInDown 2.5s forwards;">
                             <!-- Toggle Dark Mode -->
-                            <button 
-                                @click="toggleDarkMode()"
+                            <button @click="toggleDarkMode()"
                                 class="p-2 rounded-lg bg-white/20 hover:bg-white/30 text-white transition-all"
-                                :aria-label="darkMode ? 'Activar modo claro' : 'Activar modo oscuro'"
-                            >
+                                :aria-label="darkMode ? 'Activar modo claro' : 'Activar modo oscuro'">
                                 <i class="fas" :class="darkMode ? 'fa-sun' : 'fa-moon'"></i>
                             </button>
-                            
+
                             <!-- Botón Sistema (reemplaza lógica de login). Mantiene la estética del botón anterior -->
                             <a :href="sistemaUrl"
                                 class="px-6 py-2 rounded-lg border-2 border-white text-white font-medium hover:bg-white hover:text-primary transition-all text-center"
@@ -191,125 +201,91 @@
                 </div>
             </nav>
         </header>
-        
+
         <!-- MOBILE NAVBAR & DRAWER - Se muestra solo en móvil (< 768px) -->
         <header class="md:hidden sticky top-0 z-40 fade-in-down">
             <nav class="gradient-primary shadow-lg">
                 <div class="flex items-center justify-between px-4 py-3">
-                    
+
                     <!-- Logo Móvil -->
                     <div class="flex-shrink-0">
                         <a href="/">
-                            <img 
-                                src="Images/School_Logo.webp" 
-                                alt="Logo Escuela EEST N°1" 
-                                class="h-12 w-auto"
-                            >
+                            <img src="Images/School_Logo.webp" alt="Logo Escuela EEST N°1" class="h-12 w-auto">
                         </a>
                     </div>
-                    
+
                     <!-- Botones: Dark Mode + Menu -->
                     <div class="flex items-center gap-3">
                         <!-- Toggle Dark Mode Móvil -->
-                        <button 
-                            @click="toggleDarkMode()"
+                        <button @click="toggleDarkMode()"
                             class="p-2 rounded-lg bg-white/20 hover:bg-white/30 text-white transition-all"
-                            :aria-label="darkMode ? 'Activar modo claro' : 'Activar modo oscuro'"
-                        >
+                            :aria-label="darkMode ? 'Activar modo claro' : 'Activar modo oscuro'">
                             <i class="fas" :class="darkMode ? 'fa-sun' : 'fa-moon'"></i>
                         </button>
-                        
+
                         <!-- Botón Menu Hamburguesa -->
-                        <button 
-                            @click="drawerOpen = true"
+                        <button @click="drawerOpen = true"
                             class="p-2 rounded-lg bg-white/20 hover:bg-white/30 text-white text-xl transition-all"
-                            aria-label="Abrir menú"
-                        >
+                            aria-label="Abrir menú">
                             <i class="fas fa-bars"></i>
                         </button>
                     </div>
                 </div>
             </nav>
         </header>
-        
+
         <!-- DRAWER LATERAL MÓVIL -->
-        <div 
-            x-show="drawerOpen" 
-            x-transition:enter="transition ease-out duration-300"
-            x-transition:enter-start="opacity-0"
-            x-transition:enter-end="opacity-100"
-            x-transition:leave="transition ease-in duration-200"
-            x-transition:leave-start="opacity-100"
-            x-transition:leave-end="opacity-0"
-            class="fixed inset-0 bg-black/50 drawer-overlay z-50 md:hidden"
-            @click="drawerOpen = false"
-            style="display: none;"
-        >
+        <div x-show="drawerOpen" x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+            x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0" class="fixed inset-0 bg-black/50 drawer-overlay z-50 md:hidden"
+            @click="drawerOpen = false" style="display: none;">
             <!-- Panel Drawer -->
-            <div 
-                @click.stop
-                x-show="drawerOpen"
-                x-transition:enter="transition ease-out duration-300 transform"
-                x-transition:enter-start="translate-x-full"
-                x-transition:enter-end="translate-x-0"
-                x-transition:leave="transition ease-in duration-200 transform"
-                x-transition:leave-start="translate-x-0"
+            <div @click.stop x-show="drawerOpen" x-transition:enter="transition ease-out duration-300 transform"
+                x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0"
+                x-transition:leave="transition ease-in duration-200 transform" x-transition:leave-start="translate-x-0"
                 x-transition:leave-end="translate-x-full"
-                class="absolute right-0 top-0 bottom-0 w-80 max-w-[85vw] gradient-primary shadow-2xl overflow-y-auto"
-            >
+                class="absolute right-0 top-0 bottom-0 w-80 max-w-[85vw] gradient-primary shadow-2xl overflow-y-auto">
                 <div class="flex flex-col min-h-full p-6">
-                    
+
                     <!-- Logo y Título -->
                     <div class="flex items-center gap-4 mb-8">
-                        <img 
-                            src="Images/School_Logo.webp" 
-                            alt="Logo Escuela" 
-                            class="w-16 h-auto"
-                        >
+                        <img src="Images/School_Logo.webp" alt="Logo Escuela" class="w-16 h-auto">
                         <h1 class="text-2xl font-bold text-white" style="-webkit-text-stroke: 1px rgba(0,0,0,0.3);">
                             EEST1
                         </h1>
                     </div>
-                    
+
                     <!-- Enlaces de Navegación -->
                     <nav class="flex-grow">
                         <ul class="space-y-6">
                             <li>
-                                <a 
-                                    href="/" 
-                                    class="text-white text-lg font-medium underline decoration-white hover:text-gray-200 transition-colors block"
-                                >
+                                <a href="/"
+                                    class="text-white text-lg font-medium underline decoration-white hover:text-gray-200 transition-colors block">
                                     Inicio
                                 </a>
                             </li>
                             <li>
-                                <a 
-                                    :href="reservasUrl" 
-                                    class="text-white text-lg font-medium underline decoration-white hover:text-gray-200 transition-colors block"
-                                >
+                                <a :href="reservasUrl"
+                                    class="text-white text-lg font-medium underline decoration-white hover:text-gray-200 transition-colors block">
                                     Reservas
                                 </a>
                             </li>
                             <li>
-                                <a 
-                                    href="/equipo-de-gestion.html" 
-                                    class="text-white text-lg font-bold underline decoration-white block"
-                                >
+                                <a href="/equipo-de-gestion.html"
+                                    class="text-white text-lg font-bold underline decoration-white block">
                                     Equipo de Gestión
                                 </a>
                             </li>
                             <li>
-                                <a 
-                                    href="https://www.facebook.com/tecnicachivilcoy/" 
-                                    target="_blank"
-                                    class="text-white text-lg font-medium underline decoration-white hover:text-gray-200 transition-colors block"
-                                >
+                                <a href="https://www.facebook.com/tecnicachivilcoy/" target="_blank"
+                                    class="text-white text-lg font-medium underline decoration-white hover:text-gray-200 transition-colors block">
                                     Noticias
                                 </a>
                             </li>
                         </ul>
                     </nav>
-                    
+
                     <!-- Botón Login/Logout al fondo -->
                     <div class="mt-8 pt-6 border-t border-white/30">
                         <a :href="sistemaUrl" @click="drawerOpen = false"
@@ -319,133 +295,118 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- MAIN CONTENT AREA -->
         <main class="flex-grow">
             <!-- Page Container - Reemplaza .page-container -->
             <div class="container mx-auto px-4 py-8 max-w-6xl">
-                
+
                 <!-- Sección Directivos - Reemplaza primer .section-container -->
                 <div class="rounded-xl shadow-lg p-6 md:p-8 mb-8 fade-in"
-                     :class="darkMode ? 'bg-gray-800' : 'bg-white'">
-                    
+                    :class="darkMode ? 'bg-gray-800' : 'bg-white'">
+
                     <!-- Section Title - Reemplaza .section-title -->
                     <h2 class="text-2xl md:text-3xl font-semibold text-center mb-12 relative pb-3 section-title-line"
                         :class="darkMode ? 'text-white' : 'text-[#1d3b6c]'">
                         Directivos
                     </h2>
-                    
+
                     <!-- Grid de Directivos - Reemplaza Row Gutter de Ant Design -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        
+
                         <!-- Card: Rubén Cruz (Director) - Reemplaza Card de Ant Design -->
                         <div class="rounded-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-                             :class="darkMode ? 'bg-gray-700 border border-gray-600' : 'bg-white border border-gray-100 shadow-md'">
+                            :class="darkMode ? 'bg-gray-700 border border-gray-600' : 'bg-white border border-gray-100 shadow-md'">
                             <div class="text-center">
                                 <!-- Avatar - Reemplaza Avatar de Ant Design -->
                                 <div class="mb-4 flex justify-center">
-                                    <img 
-                                        src="Images/SchoolManagement/SchoolLeaders/Ruben_Cruz.webp" 
-                                        alt="Rubén Cruz - Director"
-                                        class="w-24 h-24 rounded-full object-cover border-4"
+                                    <img src="Images/SchoolManagement/SchoolLeaders/Ruben_Cruz.webp"
+                                        alt="Rubén Cruz - Director" class="w-24 h-24 rounded-full object-cover border-4"
                                         :class="darkMode ? 'border-gray-600' : 'border-gray-200'"
-                                        onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%236b7280%22%3E%3Cpath d=%22M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z%22/%3E%3C/svg%3E';"
-                                    >
+                                        onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%236b7280%22%3E%3Cpath d=%22M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z%22/%3E%3C/svg%3E';">
                                 </div>
                                 <!-- Nombre - Reemplaza .card-title -->
-                                <h3 class="text-lg font-medium mb-1"
-                                    :class="darkMode ? 'text-white' : 'text-gray-800'">
+                                <h3 class="text-lg font-medium mb-1" :class="darkMode ? 'text-white' : 'text-gray-800'">
                                     Rubén Cruz
                                 </h3>
                                 <!-- Cargo - Reemplaza .area-specialty -->
-                                <p class="text-sm"
-                                   :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
+                                <p class="text-sm" :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
                                     Director
                                 </p>
                             </div>
                         </div>
-                        
+
                         <!-- Card: Daniel Bascarán (Vice Director) -->
                         <div class="rounded-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-                             :class="darkMode ? 'bg-gray-700 border border-gray-600' : 'bg-white border border-gray-100 shadow-md'">
+                            :class="darkMode ? 'bg-gray-700 border border-gray-600' : 'bg-white border border-gray-100 shadow-md'">
                             <div class="text-center">
                                 <div class="mb-4 flex justify-center">
-                                    <img 
-                                        src="Images/SchoolManagement/SchoolLeaders/Daniel_Bascaran.webp" 
+                                    <img src="Images/SchoolManagement/SchoolLeaders/Daniel_Bascaran.webp"
                                         alt="Daniel Bascarán - Vice Director"
                                         class="w-24 h-24 rounded-full object-cover border-4"
                                         :class="darkMode ? 'border-gray-600' : 'border-gray-200'"
-                                        onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%236b7280%22%3E%3Cpath d=%22M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z%22/%3E%3C/svg%3E';"
-                                    >
+                                        onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%236b7280%22%3E%3Cpath d=%22M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z%22/%3E%3C/svg%3E';">
                                 </div>
-                                <h3 class="text-lg font-medium mb-1"
-                                    :class="darkMode ? 'text-white' : 'text-gray-800'">
+                                <h3 class="text-lg font-medium mb-1" :class="darkMode ? 'text-white' : 'text-gray-800'">
                                     Daniel Bascarán
                                 </h3>
-                                <p class="text-sm"
-                                   :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
+                                <p class="text-sm" :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
                                     Vice Director
                                 </p>
                             </div>
                         </div>
-                        
+
                         <!-- Card: Yesica Cipriano (Vice Directora) -->
                         <div class="rounded-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-                             :class="darkMode ? 'bg-gray-700 border border-gray-600' : 'bg-white border border-gray-100 shadow-md'">
+                            :class="darkMode ? 'bg-gray-700 border border-gray-600' : 'bg-white border border-gray-100 shadow-md'">
                             <div class="text-center">
                                 <div class="mb-4 flex justify-center">
-                                    <img 
-                                        src="Images/SchoolManagement/SchoolLeaders/Yesica_Cipriano.webp" 
+                                    <img src="Images/SchoolManagement/SchoolLeaders/Yesica_Cipriano.webp"
                                         alt="Yesica Cipriano - Vice Directora"
                                         class="w-24 h-24 rounded-full object-cover border-4"
                                         :class="darkMode ? 'border-gray-600' : 'border-gray-200'"
-                                        onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%236b7280%22%3E%3Cpath d=%22M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z%22/%3E%3C/svg%3E';"
-                                    >
+                                        onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%236b7280%22%3E%3Cpath d=%22M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z%22/%3E%3C/svg%3E';">
                                 </div>
-                                <h3 class="text-lg font-medium mb-1"
-                                    :class="darkMode ? 'text-white' : 'text-gray-800'">
+                                <h3 class="text-lg font-medium mb-1" :class="darkMode ? 'text-white' : 'text-gray-800'">
                                     Yesica Cipriano
                                 </h3>
-                                <p class="text-sm"
-                                   :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
+                                <p class="text-sm" :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
                                     Vice Directora
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Sección Secretarías - Reemplaza segundo .section-container -->
-                <div class="rounded-xl shadow-lg p-6 md:p-8 mb-8 fade-in"
-                     :class="darkMode ? 'bg-gray-800' : 'bg-white'"
-                     style="animation-delay: 0.2s;">
-                    
+                <div class="rounded-xl shadow-lg p-6 md:p-8 mb-8 fade-in" :class="darkMode ? 'bg-gray-800' : 'bg-white'"
+                    style="animation-delay: 0.2s;">
+
                     <h2 class="text-2xl md:text-3xl font-semibold text-center mb-12 relative pb-3 section-title-line"
                         :class="darkMode ? 'text-white' : 'text-[#1d3b6c]'">
                         Secretarías
                     </h2>
-                    
+
                     <!-- Grid centrado para 1 card - Reemplaza Col con Style="margin: 0 auto;" -->
                     <div class="flex justify-center">
                         <div class="w-full max-w-sm">
                             <!-- Card: Clara Martínez (Secretaria) -->
                             <div class="rounded-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-                                 :class="darkMode ? 'bg-gray-700 border border-gray-600' : 'bg-white border border-gray-100 shadow-md'">
+                                :class="darkMode ? 'bg-gray-700 border border-gray-600' : 'bg-white border border-gray-100 shadow-md'">
                                 <div class="text-center">
                                     <div class="mb-4 flex justify-center">
                                         <!-- Avatar con ícono por defecto (sin imagen) - Reemplaza Avatar Icon="user" -->
                                         <div class="w-24 h-24 rounded-full flex items-center justify-center border-4"
-                                             :class="darkMode ? 'bg-gray-600 border-gray-500' : 'bg-gray-200 border-gray-300'">
+                                            :class="darkMode ? 'bg-gray-600 border-gray-500' : 'bg-gray-200 border-gray-300'">
                                             <i class="fas fa-user text-4xl"
-                                               :class="darkMode ? 'text-gray-400' : 'text-gray-500'"></i>
+                                                :class="darkMode ? 'text-gray-400' : 'text-gray-500'"></i>
                                         </div>
                                     </div>
                                     <h3 class="text-lg font-medium mb-1"
                                         :class="darkMode ? 'text-white' : 'text-gray-800'">
                                         Sra. Clara Martínez
                                     </h3>
-                                    <p class="text-sm"
-                                       :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
+                                    <p class="text-sm" :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
                                         Secretaria Administrativa
                                     </p>
                                 </div>
@@ -453,94 +414,91 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Sección Jefes de Área - Reemplaza tercer .section-container -->
-                <div class="rounded-xl shadow-lg p-6 md:p-8 mb-8 fade-in"
-                     :class="darkMode ? 'bg-gray-800' : 'bg-white'"
-                     style="animation-delay: 0.4s;">
-                    
+                <div class="rounded-xl shadow-lg p-6 md:p-8 mb-8 fade-in" :class="darkMode ? 'bg-gray-800' : 'bg-white'"
+                    style="animation-delay: 0.4s;">
+
                     <h2 class="text-2xl md:text-3xl font-semibold text-center mb-12 relative pb-3 section-title-line"
                         :class="darkMode ? 'text-white' : 'text-[#1d3b6c]'">
                         Jefes de Área
                     </h2>
-                    
+
                     <!-- Grid de 2 columnas - Reemplaza Row Gutter con Span="12" -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        
+
                         <!-- Card: Jose Luis Villar (Electromecánica) -->
                         <div class="rounded-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-                             :class="darkMode ? 'bg-gray-700 border border-gray-600' : 'bg-white border border-gray-100 shadow-md'">
+                            :class="darkMode ? 'bg-gray-700 border border-gray-600' : 'bg-white border border-gray-100 shadow-md'">
                             <div class="text-center">
                                 <div class="mb-4 flex justify-center">
                                     <!-- Avatar con ícono por defecto -->
                                     <div class="w-24 h-24 rounded-full flex items-center justify-center border-4"
-                                         :class="darkMode ? 'bg-gray-600 border-gray-500' : 'bg-gray-200 border-gray-300'">
+                                        :class="darkMode ? 'bg-gray-600 border-gray-500' : 'bg-gray-200 border-gray-300'">
                                         <i class="fas fa-user text-4xl"
-                                           :class="darkMode ? 'text-gray-400' : 'text-gray-500'"></i>
+                                            :class="darkMode ? 'text-gray-400' : 'text-gray-500'"></i>
                                     </div>
                                 </div>
-                                <h3 class="text-lg font-medium mb-1"
-                                    :class="darkMode ? 'text-white' : 'text-gray-800'">
+                                <h3 class="text-lg font-medium mb-1" :class="darkMode ? 'text-white' : 'text-gray-800'">
                                     Jose Luis Villar
                                 </h3>
-                                <p class="text-sm"
-                                   :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
+                                <p class="text-sm" :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
                                     Jefe de Área - Electromecánica
                                 </p>
                             </div>
                         </div>
-                        
+
                         <!-- Card: Natalia González (Informática) -->
                         <div class="rounded-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-                             :class="darkMode ? 'bg-gray-700 border border-gray-600' : 'bg-white border border-gray-100 shadow-md'">
+                            :class="darkMode ? 'bg-gray-700 border border-gray-600' : 'bg-white border border-gray-100 shadow-md'">
                             <div class="text-center">
                                 <div class="mb-4 flex justify-center">
                                     <!-- Avatar con ícono por defecto -->
                                     <div class="w-24 h-24 rounded-full flex items-center justify-center border-4"
-                                         :class="darkMode ? 'bg-gray-600 border-gray-500' : 'bg-gray-200 border-gray-300'">
+                                        :class="darkMode ? 'bg-gray-600 border-gray-500' : 'bg-gray-200 border-gray-300'">
                                         <i class="fas fa-user text-4xl"
-                                           :class="darkMode ? 'text-gray-400' : 'text-gray-500'"></i>
+                                            :class="darkMode ? 'text-gray-400' : 'text-gray-500'"></i>
                                     </div>
                                 </div>
-                                <h3 class="text-lg font-medium mb-1"
-                                    :class="darkMode ? 'text-white' : 'text-gray-800'">
+                                <h3 class="text-lg font-medium mb-1" :class="darkMode ? 'text-white' : 'text-gray-800'">
                                     Natalia González
                                 </h3>
-                                <p class="text-sm"
-                                   :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
+                                <p class="text-sm" :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
                                     Jefe de Área - Informática
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </main>
-        
+
         <!-- FOOTER -->
         <footer class="gradient-primary text-white py-8 mt-auto">
             <div class="container mx-auto px-4 max-w-7xl">
-                
+
                 <!-- Footer Content - 3 columnas -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
-                    
+
                     <!-- Sección Escuela -->
                     <div class="fade-in-up text-center md:text-left" style="animation-delay: 0.1s;">
                         <h5 class="text-xl font-bold mb-4 pb-2 border-b border-white/30 relative">
                             EEST Nº 1 "Mariano Moreno"
-                            <span class="absolute bottom-0 left-1/2 md:left-0 transform -translate-x-1/2 md:translate-x-0 w-12 h-0.5 bg-white"></span>
+                            <span
+                                class="absolute bottom-0 left-1/2 md:left-0 transform -translate-x-1/2 md:translate-x-0 w-12 h-0.5 bg-white"></span>
                         </h5>
                         <p class="text-white/90 leading-relaxed">
                             Escuela de Educación Secundaria Técnica Nº1 "Mariano Moreno" de Chivilcoy.
                         </p>
                     </div>
-                    
+
                     <!-- Sección Contacto -->
                     <div class="fade-in-up text-center md:text-left" style="animation-delay: 0.3s;">
                         <h5 class="text-xl font-bold mb-4 pb-2 border-b border-white/30 relative">
                             Información de Contacto
-                            <span class="absolute bottom-0 left-1/2 md:left-0 transform -translate-x-1/2 md:translate-x-0 w-12 h-0.5 bg-white"></span>
+                            <span
+                                class="absolute bottom-0 left-1/2 md:left-0 transform -translate-x-1/2 md:translate-x-0 w-12 h-0.5 bg-white"></span>
                         </h5>
                         <ul class="space-y-3 text-white/90">
                             <li class="flex items-start justify-center md:justify-start gap-2">
@@ -557,43 +515,39 @@
                             </li>
                         </ul>
                     </div>
-                    
+
                     <!-- Sección Redes Sociales -->
                     <div class="fade-in-up text-center md:text-left" style="animation-delay: 0.5s;">
                         <h5 class="text-xl font-bold mb-4 pb-2 border-b border-white/30 relative">
                             Redes Sociales
-                            <span class="absolute bottom-0 left-1/2 md:left-0 transform -translate-x-1/2 md:translate-x-0 w-12 h-0.5 bg-white"></span>
+                            <span
+                                class="absolute bottom-0 left-1/2 md:left-0 transform -translate-x-1/2 md:translate-x-0 w-12 h-0.5 bg-white"></span>
                         </h5>
                         <div class="flex justify-center md:justify-start gap-4">
-                            <a 
-                                href="https://www.facebook.com/tecnicachivilcoy/" 
-                                target="_blank"
+                            <a href="https://www.facebook.com/tecnicachivilcoy/" target="_blank"
                                 class="text-3xl text-white hover:text-gray-200 transition-all hover:scale-110"
-                                aria-label="Facebook"
-                            >
+                                aria-label="Facebook">
                                 <i class="bi bi-facebook"></i>
                             </a>
-                            <a 
-                                href="https://www.instagram.com/eest_n1_chivilcoy/" 
-                                target="_blank"
+                            <a href="https://www.instagram.com/eest_n1_chivilcoy/" target="_blank"
                                 class="text-3xl text-white hover:text-gray-200 transition-all hover:scale-110"
-                                aria-label="Instagram"
-                            >
+                                aria-label="Instagram">
                                 <i class="bi bi-instagram"></i>
                             </a>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Footer Bottom - Copyright -->
                 <div class="border-t border-white/30 pt-6 text-center fade-in-up" style="animation-delay: 0.7s;">
                     <p class="text-white/90">
-                        © <span id="current-year"></span> - Escuela de Educación Secundaria Técnica Nº 1 "Mariano Moreno"
+                        © <span id="current-year"></span> - Escuela de Educación Secundaria Técnica Nº 1 "Mariano
+                        Moreno"
                     </p>
                 </div>
             </div>
         </footer>
-        
+
     </div>
 
     <!-- Alpine.js Component Logic -->
@@ -650,4 +604,5 @@
         }
     </script>
 </body>
+
 </html>

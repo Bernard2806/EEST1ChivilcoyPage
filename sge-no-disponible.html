@@ -51,9 +51,12 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: scale(1);
             }
+
             50% {
                 transform: scale(1.05);
             }
@@ -113,38 +116,34 @@
 
         <!-- Contenido Principal -->
         <div class="max-w-2xl w-full text-center fade-in">
-            
+
             <!-- Logo -->
             <div class="mb-8 flex justify-center">
                 <img src="Images/System_Logo.webp" alt="Logo EEST N°1" class="h-32 w-auto pulse-animation">
             </div>
 
             <!-- Tarjeta Principal -->
-            <div class="rounded-2xl shadow-2xl p-8 md:p-12"
-                :class="darkMode ? 'bg-gray-800' : 'bg-white'">
-                
+            <div class="rounded-2xl shadow-2xl p-8 md:p-12" :class="darkMode ? 'bg-gray-800' : 'bg-white'">
+
                 <!-- Icono de Construcción -->
                 <div class="mb-6">
                     <i class="fas fa-tools text-6xl md:text-7xl text-blue-500 pulse-animation"></i>
                 </div>
 
                 <!-- Título -->
-                <h1 class="text-3xl md:text-4xl font-bold mb-4"
-                    :class="darkMode ? 'text-white' : 'text-gray-800'">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4" :class="darkMode ? 'text-white' : 'text-gray-800'">
                     Sistema en Desarrollo
                 </h1>
 
                 <!-- Mensaje Principal -->
-                <p class="text-lg md:text-xl mb-6"
-                    :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+                <p class="text-lg md:text-xl mb-6" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
                     Estamos trabajando en el Sistema de Gestión Escolar para brindarte la mejor experiencia.
                 </p>
 
                 <!-- Mensaje Secundario -->
                 <div class="mb-8 p-4 rounded-lg"
                     :class="darkMode ? 'bg-blue-900/30 border border-blue-700' : 'bg-blue-50 border border-blue-200'">
-                    <p class="text-base"
-                        :class="darkMode ? 'text-blue-300' : 'text-blue-800'">
+                    <p class="text-base" :class="darkMode ? 'text-blue-300' : 'text-blue-800'">
                         <i class="fas fa-info-circle mr-2"></i>
                         El sistema estará disponible próximamente. Gracias por tu paciencia.
                     </p>
@@ -159,19 +158,15 @@
             </div>
 
             <!-- Información de Contacto -->
-            <div class="mt-8 p-6 rounded-xl"
-                :class="darkMode ? 'bg-gray-800/50' : 'bg-white/50'">
-                <p class="text-sm"
-                    :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
+            <div class="mt-8 p-6 rounded-xl" :class="darkMode ? 'bg-gray-800/50' : 'bg-white/50'">
+                <p class="text-sm" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
                     ¿Necesitas ayuda? Contacta con nosotros:
                 </p>
-                <p class="mt-2 font-medium"
-                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                <p class="mt-2 font-medium" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
                     <i class="fas fa-envelope mr-2"></i>
                     tecnica1chivilcoy@abc.gob.ar
                 </p>
-                <p class="mt-1 font-medium"
-                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                <p class="mt-1 font-medium" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
                     <i class="fas fa-phone mr-2"></i>
                     2346-431330
                 </p>
@@ -181,9 +176,9 @@
 
         <!-- Footer Simple -->
         <footer class="mt-12 text-center">
-            <p class="text-sm"
-                :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
-                © <span x-text="new Date().getFullYear()"></span> - Escuela de Educación Secundaria Técnica Nº 1 "Mariano Moreno"
+            <p class="text-sm" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
+                © <span x-text="new Date().getFullYear()"></span> - Escuela de Educación Secundaria Técnica Nº 1
+                "Mariano Moreno"
             </p>
         </footer>
 
