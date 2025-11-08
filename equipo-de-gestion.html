@@ -30,6 +30,9 @@
         }
     </script>
 
+    <!-- Configuración de URLs externas -->
+    <script src="js/config.js"></script>
+
     <!-- Alpine.js para interactividad -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
@@ -167,6 +170,13 @@
                                         class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                                 </a>
                             </li>
+                            <li style="animation: fadeInDown 2.35s forwards;">
+                                <a :href="inscripcionUrl" target="_blank" class="text-white font-medium relative group">
+                                    Inscripción
+                                    <span
+                                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                                </a>
+                            </li>
                             <li style="animation: fadeInDown 2.4s forwards;">
                                 <a href="./equipo-de-gestion" class="text-white font-medium relative group">
                                     Equipo de Gestión
@@ -269,6 +279,12 @@
                                 <a :href="reservasUrl"
                                     class="text-white text-lg font-medium underline decoration-white hover:text-gray-200 transition-colors block">
                                     Reservas
+                                </a>
+                            </li>
+                            <li>
+                                <a :href="inscripcionUrl" target="_blank"
+                                    class="text-white text-lg font-medium underline decoration-white hover:text-gray-200 transition-colors block">
+                                    Inscripción
                                 </a>
                             </li>
                             <li>
@@ -560,11 +576,10 @@
                 // Estado del modo oscuro
                 darkMode: false,
 
-                // URL configurable para la sección de Reservas. Modifícala aquí según necesites.
-                reservasUrl: 'https://reserva.great-site.net/',
-
-                // URL configurable para acceder al sistema.
-                sistemaUrl: './sge-no-disponible',
+                // URLs externas desde config.js
+                reservasUrl: window.AppConfig.reservasUrl,
+                sistemaUrl: window.AppConfig.sistemaUrl,
+                inscripcionUrl: window.AppConfig.inscripcionUrl,
 
                 // Estado del drawer móvil
                 drawerOpen: false,
